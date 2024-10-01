@@ -74,3 +74,20 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+//for (const move of movements) {
+for (const [i, move] of movements.entries()) {
+  if (move > 0) {
+    console.log(`Movement${i + 1}: You depoiteted ${move}`);
+  } else {
+    console.log(`Movement${i + 1}: You witdrew ${Math.abs(move)}`);
+  }
+}
+
+console.log('---forEach---');
+movements.forEach(function (move, i, arr) {
+  if (move > 0) {
+    console.log(`Movement${i + 1}: You depoiteted ${move}`);
+  } else {
+    console.log(`Movement${i + 1}: You witdrew ${Math.abs(move)}`);
+  }
+});
