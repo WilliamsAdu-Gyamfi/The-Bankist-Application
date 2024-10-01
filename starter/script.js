@@ -34,7 +34,6 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-
 // Elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
@@ -90,4 +89,26 @@ movements.forEach(function (move, i, arr) {
   } else {
     console.log(`Movement${i + 1}: You witdrew ${Math.abs(move)}`);
   }
+});
+
+//forEach With Maps
+const currencies2 = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+console.log('-----for of loop----');
+for (const [key, value] of currencies2) {
+  console.log(`${key}: ${value}`);
+}
+console.log('----forEach loop----');
+currencies2.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+//With Sets
+console.log('----with Sets---');
+const currencies2Unique = new Set(['USD', 'EUR', 'USD', 'GBP', 'GBP', 'EUR']);
+currencies2Unique.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
 });
