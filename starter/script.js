@@ -169,7 +169,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
   const expecteddogjulia = dogsJulia.slice();
   expecteddogjulia.splice(0, 1);
   expecteddogjulia.splice(-2);
-  const dogs = expecteddogjulia.concat(dogsJulia);
+  const dogs = expecteddogjulia.concat(dogsKate);
   console.log(dogs);
   dogs.forEach(function (dog, i) {
     if (dog < 4) {
