@@ -182,3 +182,4 @@ is an adult, and is ${dog} years old`);
 };
 
 checkDogs(julia1, kate1);
+checkDogs(julia2, kate2);
