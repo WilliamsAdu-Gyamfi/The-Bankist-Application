@@ -164,6 +164,21 @@ const julia1 = [3, 5, 2, 12, 7];
 const kate1 = [4, 1, 15, 8, 3];
 const julia2 = [9, 16, 6, 8, 3];
 const kate2 = [10, 5, 6, 1, 4];
-const checkDogs = function ([dogsJulia, dogsKate]) {
-  julia1.splice(-1);
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const expecteddogjulia = dogsJulia.slice();
+  expecteddogjulia.splice(0, 1);
+  expecteddogjulia.splice(-2);
+  const dogs = expecteddogjulia.concat(dogsJulia);
+  console.log(dogs);
+  dogs.forEach(function (dog, i) {
+    if (dog < 4) {
+      console.log(`Dog number ${i + 1} is still a puppy`);
+    } else {
+      console.log(`Dog number ${i + 1} 
+is an adult, and is ${dog} years old`);
+    }
+  });
 };
+
+checkDogs(julia1, kate1);
