@@ -34,6 +34,7 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
+
 // Elements
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".date");
@@ -80,20 +81,20 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-const customer = "Steven Thomas Williams";
-const customerName = function (customer) {
-  const customerName = customer
-    .toLowerCase()
-    .split(" ")
-    .map(function (customer) {
-      return customer[0];
-    })
-    .join("");
-  return customerName;
+const customerName = function (accts) {
+  accts.forEach(function (acct) {
+    acct.customerName = acct.owner
+      .toLowerCase()
+      .split(" ")
+      .map(function (customer) {
+        return customer[0];
+      })
+      .join("");
+  });
 };
 
-console.log(customerName("Steven Thomas Williams"));
-console.log(customerName("Jonas Schmedtmann"));
+customerName(accounts);
+console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
