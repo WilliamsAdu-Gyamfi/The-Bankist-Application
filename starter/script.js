@@ -80,6 +80,20 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const customer = "Steven Thomas Williams";
+const customerName = function (customer) {
+  const customerName = customer
+    .toLowerCase()
+    .split(" ")
+    .map(function (customer) {
+      return customer[0];
+    })
+    .join("");
+  return customerName;
+};
+
+console.log(customerName("Steven Thomas Williams"));
+console.log(customerName("Jonas Schmedtmann"));
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
