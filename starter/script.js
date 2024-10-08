@@ -183,3 +183,21 @@ is an adult, and is ${dog} years old`);
 
 checkDogs(julia1, kate1);
 checkDogs(julia2, kate2);
+
+const julia3 = [3, 5, 2, 12, 7];
+//const test = julia3.splice(0, 1);
+//console.log(test);
+//console.log(julia3.splice(-2));
+console.log(julia3.splice(0, 1));
+console.log(julia3);
+
+//small challenge
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//const movementUSD = movements.map(function(movements){
+//return movements * eurToUsd})
+
+//OR(ARROW FUNCTION)
+const eurToUsd = 1.1;
+const movementsUSD = movements.map(movements => movements * eurToUsd);
+console.log(movements);
+console.log(movementsUSD);
