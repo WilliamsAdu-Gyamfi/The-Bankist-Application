@@ -108,6 +108,7 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+/*
 //for (const move of movements) {
 console.log("---for of loop---");
 const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -175,6 +176,7 @@ Test data:
 § Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 */
 
+/*
 const julia1 = [3, 5, 2, 12, 7];
 const kate1 = [4, 1, 15, 8, 3];
 const julia2 = [9, 16, 6, 8, 3];
@@ -216,3 +218,18 @@ const eurToUsd = 1.1;
 const movementsUSD = movements.map(movements => movements * eurToUsd);
 console.log(movements);
 console.log(movementsUSD);
+*/
+
+//FILTER METHOD
+//small challlenge bySelf
+const deposits = movements.filter(function (move) {
+  return move > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+const withdrawal = movements.filter(function (move) {
+  return move < 0;
+});
+console.log(movements);
+console.log(withdrawal);
