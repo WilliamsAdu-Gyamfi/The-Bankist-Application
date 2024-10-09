@@ -233,3 +233,9 @@ const withdrawal = movements.filter(function (move) {
 });
 console.log(movements);
 console.log(withdrawal);
+
+//REDUCE METHOD
+const balance = movements.reduce(function (acc, curr, i, arr) {
+  return acc + curr;
+}, 10);
+console.log(balance);
