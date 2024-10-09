@@ -95,6 +95,15 @@ const customerName = function (accts) {
 
 customerName(accounts);
 console.log(accounts);
+
+const calcBalance = function (movements) {
+  const balance = movements.reduce(function (acc, move) {
+    return acc + move;
+  }, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcBalance(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -239,3 +248,17 @@ const balance = movements.reduce(function (acc, curr, i, arr) {
   return acc + curr;
 }, 10);
 console.log(balance);
+
+//MAXIMUM VALUE
+const max = movements.reduce(function (acc, move) {
+  if (acc > move) return acc;
+  else return move;
+}, movements[0]);
+console.log(max);
+
+//MINIMUM VALUE
+const min = movements.reduce(function (acc, move) {
+  if (acc < move) return acc;
+  else return move;
+}, movements[0]);
+console.log(min);
