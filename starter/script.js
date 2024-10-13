@@ -282,23 +282,6 @@ Test data:
 § Data 1: [5, 2, 4, 1, 15, 8, 3]
 § Data 2: [16, 6, 10, 5, 6, 1, 4]
 */
-/*
-const checkDogs = function (dogsJulia, dogsKate) {
-  const expecteddogjulia = dogsJulia.slice();
-  expecteddogjulia.splice(0, 1);
-  expecteddogjulia.splice(-2);
-  const dogs = expecteddogjulia.concat(dogsKate);
-  console.log(dogs);
-  dogs.forEach(function (dog, i) {
-    if (dog < 4) {
-      console.log(`Dog number ${i + 1} is still a puppy`);
-    } else {
-      console.log(`Dog number ${i + 1} 
-is an adult, and is ${dog} years old`);
-    }
-  });
-};
-*/
 
 const calcAverageHumanAge = function (age) {
   const humanAge = age <= 2 ? 2 * age : 16 + age * 4;
@@ -311,3 +294,17 @@ ages.forEach(function (age) {
   const humanAge = calcAverageHumanAge(age);
   console.log(`Dog age: ${age}, Human age: ${humanAge}`);
 });
+
+const minDogs = ages.map(calcAverageHumanAge).filter(function (adult) {
+  return adult < 18;
+});
+console.log(minDogs);
+
+const sumHumanAge = minDogs.reduce(function (acc, adult) {
+  return acc + adult;
+}, 0);
+console.log(ages);
+
+const HuamanAverage = sumHumanAge / minDogs.length;
+
+console.log(HuamanAverage);
