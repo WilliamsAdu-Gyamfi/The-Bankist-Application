@@ -309,3 +309,11 @@ const results2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log("Original Array:", results2.originalArray);
 console.log("Adults Human Dogs", results2.adultHumanDogs);
 console.log("Average of Adult Human Ages:", results2.averageAdult);
+
+//Pipeline
+const eurToUsd = 1.1;
+const totalDeposits = movements
+  .filter(move => move > 0)
+  .map(move => move * eurToUsd)
+  .reduce((acc, move) => acc + move);
+console.log(totalDeposits);
