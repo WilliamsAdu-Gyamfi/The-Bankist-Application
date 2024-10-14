@@ -283,28 +283,29 @@ Test data:
 § Data 2: [16, 6, 10, 5, 6, 1, 4]
 */
 
-const calcAverageHumanAge = function (age) {
-  const humanAge = age <= 2 ? 2 * age : 16 + age * 4;
-  return humanAge;
+const calcAverageHumanAge = function (ages) {
+  const humanAge = ages.map(function (age) {
+    return age <= 2 ? 2 * age : 16 + age * 4;
+  });
+  const adultHumanDogs = humanAge.filter(function (adult) {
+    return adult >= 18;
+  });
+  const averageAdult = adultHumanDogs.reduce(function (acc, sum) {
+    return acc + sum / adultHumanDogs.length;
+  }, 0);
+
+  return {
+    originalArray: ages,
+    adultHumanDogs: adultHumanDogs,
+    averageAdult: averageAdult,
+  };
 };
+const results1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+console.log("Original Array:", results1.originalArray);
+console.log("Adults Human Dogs", results1.adultHumanDogs);
+console.log("AAverage of Adult Human Ages:", results1.averageAdult);
 
-// Using forEach to loop over the array
-const ages = [5, 2, 4, 1, 15, 8, 3];
-ages.forEach(function (age) {
-  const humanAge = calcAverageHumanAge(age);
-  console.log(`Dog age: ${age}, Human age: ${humanAge}`);
-});
-
-const minDogs = ages.map(calcAverageHumanAge).filter(function (adult) {
-  return adult < 18;
-});
-console.log(minDogs);
-
-const sumHumanAge = minDogs.reduce(function (acc, adult) {
-  return acc + adult;
-}, 0);
-console.log(ages);
-
-const HuamanAverage = sumHumanAge / minDogs.length;
-
-console.log(HuamanAverage);
+const results2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log("Original Array:", results2.originalArray);
+console.log("Adults Human Dogs", results2.adultHumanDogs);
+console.log("Average of Adult Human Ages:", results2.averageAdult);
