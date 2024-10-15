@@ -72,7 +72,7 @@ const displayMovements = function (movements) {
       i + 1
     } ${type}</div>
          
-          <div class="movements__value">${move}</div>
+          <div class="movements__value">${move}€</div>
         </div>
       </div>
     `;
@@ -96,14 +96,43 @@ const customerName = function (accts) {
 customerName(accounts);
 console.log(accounts);
 
+//TOTAL BALANCE
 const calcBalance = function (movements) {
   const balance = movements.reduce(function (acc, move) {
     return acc + move;
   }, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
-
 calcBalance(account1.movements);
+
+//INCOME
+const displayIncome = function (movements) {
+  const incomeSummary = movements
+    .filter(move => move > 0)
+    .reduce((acc, move) => acc + move, 0);
+  labelSumIn.textContent = `${incomeSummary}€`;
+};
+displayIncome(account1.movements);
+
+//OUTCOME
+const displayOutcome = function (movements) {
+  const outcomeSummary = movements
+    .filter(move => move < 0)
+    .reduce((acc, move) => acc + move, 0);
+  labelSumOut.textContent = `${outcomeSummary}€`;
+};
+displayOutcome(account1.movements);
+
+//INTEREST
+const displayInterest = function (movements) {
+  const interestSummary = movements
+    .filter(move => move > 0)
+    .map(move => (move * 1.2) / 100)
+    .filter(move => move >= 1)
+    .reduce((acc, move) => acc + move);
+  labelSumInterest.textContent = `${interestSummary}€`;
+};
+displayInterest(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
