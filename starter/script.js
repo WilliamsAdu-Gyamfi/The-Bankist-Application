@@ -81,7 +81,7 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-const customerName = function (accts) {
+const username = function (accts) {
   accts.forEach(function (acct) {
     acct.customerName = acct.owner
       .toLowerCase()
@@ -93,7 +93,18 @@ const customerName = function (accts) {
   });
 };
 
-customerName(accounts);
+username(accounts);
+console.log(accounts);
+
+let currentAccount;
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acct => acct.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+});
 console.log(accounts);
 
 //TOTAL BALANCE
@@ -133,6 +144,9 @@ const displayInterest = function (movements) {
   labelSumInterest.textContent = `${interestSummary}€`;
 };
 displayInterest(account1.movements);
+
+//Event Handlers
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -258,6 +272,7 @@ console.log(movements);
 console.log(movementsUSD);
 */
 
+/*
 //FILTER METHOD
 //small challlenge bySelf
 const deposits = movements.filter(function (move) {
@@ -312,6 +327,7 @@ Test data:
 § Data 2: [16, 6, 10, 5, 6, 1, 4]
 */
 
+/*
 const calcAverageHumanAge = function (ages) {
   const humanAge = ages.map(function (age) {
     return age <= 2 ? 2 * age : 16 + age * 4;
@@ -356,6 +372,7 @@ Test data:
 § Data 2: [16, 6, 10, 5, 6, 1, 4]
 */
 
+/*
 const calcAverageHumanAge1 = ages =>
   ages
     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
@@ -371,3 +388,4 @@ console.log(firstDebit);
 console.log(accounts);
 const account = accounts.find(acc => acc.owner === "Jessica Davis");
 console.log(account);
+*/
