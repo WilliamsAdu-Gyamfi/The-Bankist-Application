@@ -151,11 +151,18 @@ btnLogin.addEventListener("click", function (e) {
       currentAccount.owner.split(" ")[0]
     }`;
     containerApp.style.opacity = 100;
+
+    //clear user input after logging in
+    inputLoginUsername.value = "";
+    inputLoginPin.value = "";
+    inputLoginPin.blur();
+
     displayMovements(currentAccount.movements);
     calcBalance(currentAccount.movements);
     calcDisplaySummary(currentAccount.movements);
   }
 });
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
