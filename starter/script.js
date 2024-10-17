@@ -106,10 +106,12 @@ const calcBalance = function (movements) {
 };
 //calcBalance(account1.movements);
 
-const calcDisplaySummary = function (movements) {
+//const calcDisplaySummary = function (movements) {
+const calcDisplaySummary = function (acct) {
   //INCOME
   //const displayIncome = function (movements) {
-  const incomeSummary = movements
+  //const incomeSummary = movements
+  const incomeSummary = acct.movements
     .filter(move => move > 0)
     .reduce((acc, move) => acc + move, 0);
   labelSumIn.textContent = `${incomeSummary}€`;
@@ -118,7 +120,8 @@ const calcDisplaySummary = function (movements) {
 
   //OUTCOME
   //const displayOutcome = function (movements) {
-  const outcomeSummary = movements
+  //const outcomeSummary = movements
+  const outcomeSummary = acct.movements
     .filter(move => move < 0)
     .reduce((acc, move) => acc + move, 0);
   labelSumOut.textContent = `${Math.abs(outcomeSummary)}€`;
@@ -127,9 +130,10 @@ const calcDisplaySummary = function (movements) {
 
   //INTEREST
   //const displayInterest = function (movements) {
-  const interestSummary = movements
+  //const interestSummary = movements
+  const interestSummary = acct.movements
     .filter(move => move > 0)
-    .map(move => (move * 1.2) / 100)
+    .map(move => (move * acct.interestRate) / 100)
     .filter(move => move >= 1)
     .reduce((acc, move) => acc + move);
   labelSumInterest.textContent = `${interestSummary}€`;
@@ -151,11 +155,19 @@ btnLogin.addEventListener("click", function (e) {
       currentAccount.owner.split(" ")[0]
     }`;
     containerApp.style.opacity = 100;
+
+    //clear user input after logging in
+    inputLoginUsername.value = "";
+    inputLoginPin.value = "";
+    inputLoginPin.blur();
+
     displayMovements(currentAccount.movements);
     calcBalance(currentAccount.movements);
-    calcDisplaySummary(currentAccount.movements);
+    //calcDisplaySummary(currentAccount.movements);
+    calcDisplaySummary(currentAccount);
   }
 });
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -398,3 +410,31 @@ console.log(accounts);
 const account = accounts.find(acc => acc.owner === "Jessica Davis");
 console.log(account);
 */
+
+const julia1 = [3, 5, 2, 12, 7];
+const kate1 = [4, 1, 15, 8, 3];
+const julia2 = [9, 16, 6, 8, 3];
+const kate2 = [10, 5, 6, 1, 4];
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const expecteddogjulia = dogsJulia.slice();
+  expecteddogjulia.splice(0, 1);
+  expecteddogjulia.splice(-2);
+  const dogs = expecteddogjulia.concat(dogsKate);
+  console.log(dogs);
+  dogs.forEach(function (dog, i) {
+    if (dog < 4) {
+      console.log(`Dog number ${i + 1} is still a puppy`);
+    } else {
+      console.log(`Dog number ${i + 1} 
+is an adult, and is ${dog} years old`);
+    }
+  });
+};
+
+checkDogs(julia1, kate1);
+checkDogs(julia2, kate2);
+
+const julia7 = [3, 5, 2, 12, 7];
+const test = julia7.splice(1);
+console.log(test);
