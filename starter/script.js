@@ -79,11 +79,12 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-displayMovements(account1.movements);
+//displayMovements(account1.movements);
 
-const username = function (accts) {
+//creating usernames
+const createUsernames = function (accts) {
   accts.forEach(function (acct) {
-    acct.customerName = acct.owner
+    acct.user = acct.owner
       .toLowerCase()
       .split(" ")
       .map(function (customer) {
@@ -93,18 +94,7 @@ const username = function (accts) {
   });
 };
 
-username(accounts);
-console.log(accounts);
-
-let currentAccount;
-btnLogin.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  currentAccount = accounts.find(
-    acct => acct.username === inputLoginUsername.value
-  );
-  console.log(currentAccount);
-});
+createUsernames(accounts);
 console.log(accounts);
 
 //TOTAL BALANCE
@@ -114,28 +104,29 @@ const calcBalance = function (movements) {
   }, 0);
   labelBalance.textContent = `${balance}€`;
 };
-calcBalance(account1.movements);
+//calcBalance(account1.movements);
 
-//INCOME
-const displayIncome = function (movements) {
+const calcDisplaySummary = function (movements) {
+  //INCOME
+  //const displayIncome = function (movements) {
   const incomeSummary = movements
     .filter(move => move > 0)
     .reduce((acc, move) => acc + move, 0);
   labelSumIn.textContent = `${incomeSummary}€`;
-};
-displayIncome(account1.movements);
 
-//OUTCOME
-const displayOutcome = function (movements) {
+  //displayIncome(account1.movements);
+
+  //OUTCOME
+  //const displayOutcome = function (movements) {
   const outcomeSummary = movements
     .filter(move => move < 0)
     .reduce((acc, move) => acc + move, 0);
-  labelSumOut.textContent = `${outcomeSummary}€`;
-};
-displayOutcome(account1.movements);
+  labelSumOut.textContent = `${Math.abs(outcomeSummary)}€`;
 
-//INTEREST
-const displayInterest = function (movements) {
+  //displayOutcome(account1.movements);
+
+  //INTEREST
+  //const displayInterest = function (movements) {
   const interestSummary = movements
     .filter(move => move > 0)
     .map(move => (move * 1.2) / 100)
@@ -143,10 +134,28 @@ const displayInterest = function (movements) {
     .reduce((acc, move) => acc + move);
   labelSumInterest.textContent = `${interestSummary}€`;
 };
-displayInterest(account1.movements);
+//displayInterest(account1.movements);
+//calcDisplaySummary(account1.movements)
 
 //Event Handlers
+let currentAccount;
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+  currentAccount = accounts.find(
+    acct => acct.user === inputLoginUsername.value
+  );
+  console.log(currentAccount);
 
+  if (currentAccount.pin === Number(inputLoginPin.value)) {
+    labelWelcome.textContent = `Welcome Back ${
+      currentAccount.owner.split(" ")[0]
+    }`;
+    containerApp.style.opacity = 100;
+    displayMovements(currentAccount.movements);
+    calcBalance(currentAccount.movements);
+    calcDisplaySummary(currentAccount.movements);
+  }
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
