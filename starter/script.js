@@ -6,7 +6,7 @@
 
 // Data
 const account1 = {
-  owner: "Jonas Schmedtmann",
+  owner: "Williams Gyamfi",
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -156,16 +156,19 @@ btnLogin.addEventListener("click", function (e) {
     }`;
     containerApp.style.opacity = 100;
 
-    //clear user input after logging in
+    //clear user inputs after logging in
     inputLoginUsername.value = "";
     inputLoginPin.value = "";
     inputLoginPin.blur();
 
     displayMovements(currentAccount.movements);
     calcBalance(currentAccount.movements);
-    //calcDisplaySummary(currentAccount.movements);
-    calcDisplaySummary(currentAccount);
+    calcDisplaySummary(currentAccount); //calcDisplaySummary(currentAccount.movements);
   }
+});
+
+btnTransfer.addEventListener("click", function (e) {
+  e.preventDefault();
 });
 
 /////////////////////////////////////////////////
@@ -410,31 +413,3 @@ console.log(accounts);
 const account = accounts.find(acc => acc.owner === "Jessica Davis");
 console.log(account);
 */
-
-const julia1 = [3, 5, 2, 12, 7];
-const kate1 = [4, 1, 15, 8, 3];
-const julia2 = [9, 16, 6, 8, 3];
-const kate2 = [10, 5, 6, 1, 4];
-
-const checkDogs = function (dogsJulia, dogsKate) {
-  const expecteddogjulia = dogsJulia.slice();
-  expecteddogjulia.splice(0, 1);
-  expecteddogjulia.splice(-2);
-  const dogs = expecteddogjulia.concat(dogsKate);
-  console.log(dogs);
-  dogs.forEach(function (dog, i) {
-    if (dog < 4) {
-      console.log(`Dog number ${i + 1} is still a puppy`);
-    } else {
-      console.log(`Dog number ${i + 1} 
-is an adult, and is ${dog} years old`);
-    }
-  });
-};
-
-checkDogs(julia1, kate1);
-checkDogs(julia2, kate2);
-
-const julia7 = [3, 5, 2, 12, 7];
-const test = julia7.splice(1);
-console.log(test);
