@@ -99,11 +99,12 @@ console.log(accounts);
 
 //TOTAL BALANCE
 const calcBalance = function (acct) {
-  acct.balance = movements.reduce(function (acc, move) {
+  acct.balance = acct.movements.reduce(function (acc, move) {
     return acc + move;
   }, 0);
   labelBalance.textContent = `${acct.balance}€`;
 };
+
 //calcBalance(account1.movements);
 
 //const calcDisplaySummary = function (movements) {
@@ -119,7 +120,7 @@ const calcDisplaySummary = function (acct) {
   //displayIncome(account1.movements);
 
   //OUTCOME
-  //const displayOutcome = function (movements) {
+  //const displayOutcome = function (movemen ts) {
   //const outcomeSummary = movements
   const outcomeSummary = acct.movements
     .filter(move => move < 0)
@@ -146,6 +147,7 @@ const updatateUI = function (acct) {
   calcBalance(acct);
   calcDisplaySummary(acct);
 };
+
 //Event Handlers
 let currentAccount;
 btnLogin.addEventListener("click", function (e) {
@@ -155,8 +157,9 @@ btnLogin.addEventListener("click", function (e) {
   );
   console.log(currentAccount);
 
-  if (currentAccount.pin === Number(inputLoginPin.value)) {
-    labelWelcome.textContent = `Welcome Back ${
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //Display UI and welcome message
+    labelWelcome.textContent = `Welcome Back, ${
       currentAccount.owner.split(" ")[0]
     }`;
     containerApp.style.opacity = 100;
