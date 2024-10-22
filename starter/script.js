@@ -198,6 +198,25 @@ btnTransfer.addEventListener("click", function (e) {
   }
 });
 
+//closing account
+btnClose.addEventListener("click", function (e) {
+  e.preventDefault();
+  //console.log("Delete");
+  if (
+    inputCloseUsername.value === currentAccount.user &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    console.log("Delete?");
+    const index = accounts.findIndex(acct => acct.user === currentAccount.user);
+    console.log(index);
+    accounts.splice(index, 1);
+    inputCloseUsername.value = "";
+    inputClosePin.value = "";
+    inputClosePin.blur();
+  }
+  containerApp.style.opacity = 0;
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
