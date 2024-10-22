@@ -483,3 +483,33 @@ console.log(movements.some(move => move > 0));
 
 //every method
 console.log(movements.every(move => move > 0));
+
+//Flat and FlatMethod
+const arr = [[1, 2], 3, 4, [5, 6]];
+const normalArr = arr.flat();
+console.log(normalArr);
+
+const arrDeep = [[[1, 2], 3, 4], [[5, 6], 7], 8];
+console.log(arrDeep.flat(2)); // Going Deep
+
+/*
+console.log(accounts);
+const allMovements = accounts.map(acct => acct.movements);
+console.log(allMovements);
+const combineAllMovements = allMovements.flat();
+console.log(combineAllMovements);
+const totalBalance = combineAllMovements.reduce((acct, move) => acct + move, 0);
+console.log(totalBalance);
+*/
+
+const totalBalance = accounts
+  .map(acct => acct.movements)
+  .flat()
+  .reduce((acct, move) => acct + move, 0);
+console.log(totalBalance);
+
+//FLATMAP MEHOD
+const totalBalance2 = accounts
+  .flatMap(acct => acct.movements)
+  .reduce((acct, move) => acct + move, 0);
+console.log(totalBalance2);
