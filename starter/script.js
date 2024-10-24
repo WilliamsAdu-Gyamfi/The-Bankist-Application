@@ -513,3 +513,34 @@ const totalBalance2 = accounts
   .flatMap(acct => acct.movements)
   .reduce((acct, move) => acct + move, 0);
 console.log(totalBalance2);
+
+//sorting Arrays
+
+//return < 0, A, B(KEEP ORDER)
+//return > 0, B, A(SWITCH ORDER)
+
+//strings
+const candidates = ["Williams", "Adu", "Gyamfi"];
+console.log(candidates.sort());
+
+//numbers
+console.log(account1.movements);
+console.log(account1.movements.sort());
+
+//ascending order
+account1.movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(account1.movements);
+
+//descending order
+account1.movements.sort((a, b) => {
+  if (a > b) return -1;
+  if (a < b) return 1;
+});
+console.log(account1.movements);
+
+//more simple way
+account1.movements.sort((a, b) => a - b);
+console.log(account1.movements);
