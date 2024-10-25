@@ -555,3 +555,11 @@ console.log(account1.movements);
 //more simple way
 account1.movements.sort((a, b) => a - b);
 console.log(account1.movements);
+
+//EXERCISE
+//Create an array of 100 random dice roll
+const diceRolls = Array.from(
+  { length: 100 },
+  () => Math.floor(Math.random() * 6) + 1
+);
+console.log(diceRolls);
