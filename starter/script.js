@@ -563,3 +563,11 @@ const diceRolls = Array.from(
   () => Math.floor(Math.random() * 6) + 1
 );
 console.log(diceRolls);
+
+labelWelcome.addEventListener("click", function () {
+  console.log("hey");
+  const movementsUI = Array.from(
+    document.querySelectorAll(".movements__value")
+  );
+  console.log(movementsUI.map(el => Number(el.textContent.replace("€", ""))));
+});
