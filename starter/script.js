@@ -630,15 +630,29 @@ const dogs = [
 ];
 
 //1
-dogs.forEach(function (dog) {
-  const recommendedFood = dog.weight ** 0.75 * 28;
-  console.log(recommendedFood);
+dogs.forEach(dog => (dog.recommendedFood = dog.weight ** 0.75 * 28));
+console.log(dogs);
 
-  /*
-  //3
-  § Being within a range 10% above and below the recommended portion means: 
-current > (recommended * 0.90) && current < (recommended * 
-1.10). Basically, the current portion should be between 90% and 110% of the 
-recommended portion
-*/
-});
+//2
+const sarahDog = dogs.find(dog => dog.owners.includes("Sarah"));
+console.log(
+  `Sarah's dog eats too ${
+    sarahDog.curFood > sarahDog.recommendedFood ? "much" : "little"
+  } `
+);
+
+//3
+const ownersEatTooMuch = dogs
+
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .map(dog => dog.owners)
+  .flat();
+console.log(ownersEatTooMuch);
+
+//3
+const ownersEatTooLittle = dogs
+
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .map(dog => dog.owners)
+  .flat();
+console.log(ownersEatTooLittle);
