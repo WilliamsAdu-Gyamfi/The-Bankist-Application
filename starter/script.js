@@ -656,3 +656,31 @@ const ownersEatTooLittle = dogs
   .map(dog => dog.owners)
   .flat();
 console.log(ownersEatTooLittle);
+
+//4
+const ownersEatTooMuchNames = dogs
+
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .map(dog => dog.owners)
+  .flat();
+console.log(`${ownersEatTooMuchNames.join(" and ")} dog eat too much`);
+
+const ownersEatTooLittleNames = dogs
+
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .map(dog => dog.owners)
+  .flat();
+console.log(`${ownersEatTooLittle.join(" and ")} dog eat too little`);
+
+//5
+const dogsEatExactly = dogs.some(dog => dog.curFood === dog.recommendedFood);
+console.log(dogsEatExactly);
+
+//6
+const dogsEatOkay = dogs.some(
+  dog =>
+    dog.curFood >= dog.recommendedFood && dog.curFood >= dog.recommendedFood
+);
+console.log(dogsEatOkay);
+
+//7
