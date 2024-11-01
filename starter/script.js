@@ -630,7 +630,9 @@ const dogs = [
 ];
 
 //1
-dogs.forEach(dog => (dog.recommendedFood = dog.weight ** 0.75 * 28));
+dogs.forEach(dog =>
+  Math.trunc((dog.recommendedFood = dog.weight ** 0.75 * 28))
+);
 console.log(dogs);
 
 //2
@@ -645,16 +647,16 @@ console.log(
 const ownersEatTooMuch = dogs
 
   .filter(dog => dog.curFood > dog.recommendedFood)
-  .map(dog => dog.owners)
-  .flat();
+  .flatMap(dog => dog.owners);
+//.flat();
 console.log(ownersEatTooMuch);
 
 //3
 const ownersEatTooLittle = dogs
 
   .filter(dog => dog.curFood < dog.recommendedFood)
-  .map(dog => dog.owners)
-  .flat();
+  .flatMap(dog => dog.owners);
+//.flat();
 console.log(ownersEatTooLittle);
 
 //4
@@ -668,8 +670,8 @@ console.log(`${ownersEatTooMuchNames.join(" and ")}'s dog eat too much!`);
 const ownersEatTooLittleNames = dogs
 
   .filter(dog => dog.curFood < dog.recommendedFood)
-  .map(dog => dog.owners)
-  .flat();
+  .flatMap(dog => dog.owners);
+//.flat();
 console.log(`${ownersEatTooLittle.join(" and ")}'s dog eat too little!`);
 
 //5
