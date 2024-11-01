@@ -663,14 +663,14 @@ const ownersEatTooMuchNames = dogs
   .filter(dog => dog.curFood > dog.recommendedFood)
   .map(dog => dog.owners)
   .flat();
-console.log(`${ownersEatTooMuchNames.join(" and ")} dog eat too much`);
+console.log(`${ownersEatTooMuchNames.join(" and ")}'s dog eat too much!`);
 
 const ownersEatTooLittleNames = dogs
 
   .filter(dog => dog.curFood < dog.recommendedFood)
   .map(dog => dog.owners)
   .flat();
-console.log(`${ownersEatTooLittle.join(" and ")} dog eat too little`);
+console.log(`${ownersEatTooLittle.join(" and ")}'s dog eat too little!`);
 
 //5
 const dogsEatExactly = dogs.some(dog => dog.curFood === dog.recommendedFood);
@@ -679,8 +679,21 @@ console.log(dogsEatExactly);
 //6
 const dogsEatOkay = dogs.some(
   dog =>
-    dog.curFood >= dog.recommendedFood && dog.curFood >= dog.recommendedFood
+    dog.curFood > dog.recommendedFood * 0.9 &&
+    dog.curFood < dog.recommendedFood * 1.1
 );
 console.log(dogsEatOkay);
 
 //7
+const dogsEatOkayOwners = dogs.filter(
+  dog =>
+    dog.curFood > dog.recommendedFood * 0.9 &&
+    dog.curFood < dog.recommendedFood * 1.1
+);
+console.log(dogsEatOkayOwners);
+
+//8
+const dogsSorted = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(dogsSorted);
