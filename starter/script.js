@@ -557,6 +557,7 @@ account1.movements.sort((a, b) => a - b);
 console.log(account1.movements);
 
 //EXERCISE
+//FR0M METHOD
 //Create an array of 100 random dice roll
 const diceRolls = Array.from(
   { length: 100 },
