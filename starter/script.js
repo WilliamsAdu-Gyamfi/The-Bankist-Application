@@ -242,6 +242,16 @@ btnSort.addEventListener("click", function (e) {
   console.log("sorted");
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
+
+  //labelWelcome.addEventListener("click", function () {
+  console.log("ok");
+  [...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = "#FFD700";
+
+    if (i % 3 === 0) row.style.backgroundColor = "#D4AF37";
+
+    // if (i % 4 === 0) row.style.backgroundColor = "#FFD700";
+  });
 });
 
 /////////////////////////////////////////////////
